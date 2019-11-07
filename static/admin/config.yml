@@ -1,0 +1,22 @@
+backend:
+  name: git-gateway # An open-source API that acts as a proxy between authenticated users of your site and your site repo
+  branch: master # Branch to update; defaults to master
+
+publish_mode: editorial_workflow
+media_folder: static/imgs
+public_folder: /imgs
+
+collections:
+  - name: 'blog'
+    label: 'Blog'
+    format: 'json'
+    folder: 'assets/content/blog'
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    editor:
+      preview: false
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
