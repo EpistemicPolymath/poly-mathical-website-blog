@@ -2,21 +2,41 @@ backend:
   name: git-gateway # An open-source API that acts as a proxy between authenticated users of your site and your site repo
   branch: master # Branch to update; defaults to master
 
-publish_mode: editorial_workflow
-media_folder: static/imgs
-public_folder: /imgs
+publish_mode: editorial_workflow # Gives you an editorial workflow with drafts, and final reviews through automated Pull Requests
+media_folder: static/imgs # Media files will be stored in the repo under static/imgs
+public_folder: /imgs # The src attribute for uploaded media will begin with /imgs
 
 collections:
-  - name: 'blog'
-    label: 'Blog'
-    format: 'json'
-    folder: 'assets/content/blog'
-    create: true
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+  - name: 'writings' # Used in routes, e.g., /admin/collections/writings
+    label: 'Writings' # Used in the UI
+    label_singular: 'Writing' # Used in the UI, ie: "New Writing"
+    description: >
+      This is where all of my writings will be stored. 
+    folder: 'assets/content/writings' # The path to the folder where the content is stored
+    create: true # Allows users to create new documents in this collection
+    slug: '{{month}}-{{day}}-{{year}}-{{slug}}' #Filename Template: MM-DD-YYYY-title.md
+    summary: '{{title}} -- {{month}}//{{day}}//{{year}}'
     editor:
-      preview: false
-    fields:
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-      - { label: 'Description', name: 'description', widget: 'string' }
-      - { label: 'Body', name: 'body', widget: 'markdown' }
+      preview: true
+    fields: # The fields for each document, usually in front matter
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - {label: 'Tags', name: 'tags', widget: 'string', required: true}
+      - { 
+        label: 'Publish Date',
+        name: 'date', 
+        widget: 'datetime', 
+        dateFormat: 'MM-DD-YYYY', 
+        timeFormat: 'hh:mm',
+        format: 'MM-DD-YYYY hh:mm', 
+        required: true
+        }
+      - { 
+        label: 'Cover Image', 
+        name: 'thumbnail', 
+        widget: 'image', 
+        required: false 
+        }
+      - { label: 'Description', name: 'description', widget: 'string', required: true }
+      - { label: 'Body', name: 'body', widget: 'markdown', required: true }
+      meta:
+      - { label: 'SEO', name: 'keywords', widget: 'text' }
