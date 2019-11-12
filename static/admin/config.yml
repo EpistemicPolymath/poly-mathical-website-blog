@@ -38,5 +38,4 @@ collections:
         }
       - { label: 'Description', name: 'description', widget: 'string', required: true }
       - { label: 'Body', name: 'body', widget: 'markdown', required: true }
-      meta:
       - { label: 'SEO', name: 'keywords', widget: 'text' }
