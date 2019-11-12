@@ -3,7 +3,7 @@
     <div>
       <logo />
       <h1 class="title">
-        poly-mathical
+        The Poly-mathical Website - Still in development
       </h1>
       <h2 class="subtitle">
         A personal wesbite-blog built using Nuxt.js, Vue.js, and Netlify CMS
@@ -28,6 +28,13 @@
 import Logo from '~/components/Logo.vue'
 
 export default {
+  head() {
+    return {
+      script: [
+        { src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }
+      ]
+    }
+  },
   components: {
     Logo
   }
