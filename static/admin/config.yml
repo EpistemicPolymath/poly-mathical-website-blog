@@ -1,6 +1,7 @@
 backend:
   name: git-gateway # An open-source API that acts as a proxy between authenticated users of your site and your site repo
   branch: master # Branch to update; defaults to master
+  site_url: https://www.poly-mathical.com/
 
 publish_mode: editorial_workflow # Gives you an editorial workflow with drafts, and final reviews through automated Pull Requests
 media_folder: static/imgs # Media files will be stored in the repo under static/imgs
@@ -20,7 +21,12 @@ collections:
       preview: true
     fields: # The fields for each document, usually in front matter
       - { label: 'Title', name: 'title', widget: 'string', required: true }
-      - {label: 'Tags', name: 'tags', widget: 'string', required: true}
+      - {
+        label: 'Tags', 
+        name: 'tags', 
+        widget: 'list',
+        field: {name: 'tag', label: 'Tag', widget: 'string'},
+        required: true}
       - { 
         label: 'Publish Date',
         name: 'date', 
