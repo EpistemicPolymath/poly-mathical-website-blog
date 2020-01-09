@@ -44,4 +44,4 @@ collections:
         }
       - { label: 'Description', name: 'description', widget: 'string', required: true }
       - { label: 'Body', name: 'body', widget: 'markdown', required: true }
-      - { label: 'SEO', name: 'keywords', widget: 'text' }
+      - { label: 'SEO', name: 'keywords', widget: 'text', required: false }
