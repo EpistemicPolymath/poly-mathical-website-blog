@@ -40,13 +40,35 @@ export default {
    */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/markdownit'
   ],
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
   axios: {},
+  /*
+   ** Rendering Markdown with @nuxtjs/markdownit
+   ** See https://www.netlifycms.org/docs/nuxt/?no-cache=1&no-cache=1&no-cache=1#rendering-markdown-with-nuxtjsmarkdownit
+   */
+  markdownit: {
+    injected: true
+  },
+  /*
+   ** Generate configuration
+   */
+  generate: {
+    routes() {
+      const fs = require('fs')
+      return fs.readdirSync('./assets/content/writings').map((file) => {
+        return {
+          route: `/writings/${file.slice(2, -3)}`, // Remove the .md from the end of the filename
+          payload: require(`./assets/content/writings/${file}`)
+        }
+      })
+    }
+  },
   /*
    ** Build configuration
    */
