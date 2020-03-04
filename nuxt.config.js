@@ -61,9 +61,11 @@ export default {
   generate: {
     routes() {
       const fs = require('fs')
+      const path = require('path')
       return fs.readdirSync('./assets/content/writings').map((file) => {
         return {
-          route: `/writings/${file.slice(2, -3)}`, // Remove the .md from the end of the filename
+          route: `/blog/${path.parse(file).name}`,
+          // route: `/writings/${file.slice(2, -3)}`, // Remove the .md from the end of the filename
           payload: require(`./assets/content/writings/${file}`)
         }
       })

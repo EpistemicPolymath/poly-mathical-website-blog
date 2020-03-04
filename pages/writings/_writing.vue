@@ -1,7 +1,7 @@
 <template>
   <article>
-    <h1>{{ blogPost.title }}</h1>
-    <div v-html="$md.render(blogPost.body)" />
+    <h1>{{ writing.title }}</h1>
+    <div v-html="$md.render(writing.body)" />
   </article>
 </template>
 
