@@ -1,6 +1,7 @@
 <template>
   <article>
     <h1>{{ writing.title }}</h1>
+    <!-- <div>{{ writing.body }}</div> -->
     <div v-html="$md.render(writing.body)" />
   </article>
 </template>
@@ -11,7 +12,7 @@ export default {
     if (payload) return { writing: payload }
     else
       return {
-        writing: await require(`~/assets/content/writings/${params.writing}.json`)
+        writing: await require(`~/assets/content/writings/${params.writing}.md`)
       }
   }
 }
