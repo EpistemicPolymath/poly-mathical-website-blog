@@ -12,7 +12,7 @@ export default {
     if (payload) return { writing: payload }
     else
       return {
-        writing: await require(`~/assets/content/writings/${params.writing}.md`)
+        writing: await require(`~/assets/content/writings/${params.writings}.md`)
       }
   }
 }
