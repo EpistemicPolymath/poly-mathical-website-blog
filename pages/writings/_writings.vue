@@ -1,8 +1,7 @@
 <template>
   <article>
-    <h1>{{ writing.title }}</h1>
-    <!-- <div>{{ writing.body }}</div> -->
-    <div v-html="$md.render(writing.body)" />
+    <h1>{{ writing.slug }}</h1>
+    <div>{{ writing.default }}</div>
   </article>
 </template>
 
